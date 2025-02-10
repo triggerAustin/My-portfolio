@@ -24,4 +24,4 @@ jobs:
         run: npm run build
 
       - name: Deploy to Firebase
-        run: firebase deploy --token "$FIREBASE_TOKEN"
+        run: firebase deploy --token "4/0ASVgi3LKLhS_QW79mWhObqBQEUCoC6_GMG1SP_S0Epv9ie1VpPB6btH4mOtk48SSCb9e2w"
