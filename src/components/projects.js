@@ -1,40 +1,72 @@
-import React from 'react';
+import React from "react";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Navigation, Pagination, Autoplay } from "swiper/modules";
+import "swiper/css";
+import "swiper/css/navigation";
+import "swiper/css/pagination";
 
 const projects = [
   {
-    title: 'StudyMate',
-    description: 'An educational platform for effective revision and gamified learning.',
-    link: '#',
+    title: "Rental Management System",
+    image: "https://via.placeholder.com/800x400",
+    tech: "MERN stack",
+    description: "An online store built with React and Firebase.",
+    status: "ONGOING",
   },
   {
-    title: 'Scheduler App',
-    description: 'A scheduling web app using React and MERN stack.',
-    link: '#',
+    title: "Task Manager App",
+    image: "https://via.placeholder.com/800x400",
+    tech: "MERN stack",
+    description: "A productivity tool to manage daily tasks.",
+    status: "ONGOING",
   },
   {
-    title: 'AI-Powered Document Retrieval',
-    description: 'An AI model for retrieving and correlating user document data.',
-    link: '#',
+    title: "Study Mate",
+    image: "https://via.placeholder.com/800x400",
+    tech: "React/Flask",
+    description:
+      "A student helper website allowing students to access learning material from various Teachers and institutions.",
+    status: "ONGOING",
+  },
+  {
+    title: "Doctors Appointment",
+    image: "https://via.placeholder.com/800x400",
+    tech: "React/Flask",
+    description:
+      "An appointment booking site for patients, giving them access to doctors from different fields.",
+    status: "ONGOING",
   },
 ];
 
-const Projects = () => {
+const ProjectsCarousel = () => {
   return (
-    <section id="projects" className="bg-white py-16 px-6 md:px-20">
-      <div className="container mx-auto">
-        <h2 className="text-3xl md:text-4xl font-bold text-gray-800 mb-6">Projects</h2>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          {projects.map((project, index) => (
-            <div key={index} className="border rounded-lg p-6 shadow-sm hover:shadow-lg">
-              <h3 className="text-xl font-semibold mb-2">{project.title}</h3>
-              <p className="text-gray-700 mb-4">{project.description}</p>
-              <a href={project.link} className="text-indigo-500 hover:underline">still in development</a>
+    <div className="w-screen h-[90vh] mx-auto flex items-center justify-center" id="projects">
+      <Swiper
+        modules={[Navigation, Pagination, Autoplay]}
+        spaceBetween={30}
+        slidesPerView={1.3} // Show partial previews of adjacent slides
+        centeredSlides={true} // Ensure the active slide is centered
+        navigation
+        pagination={{ clickable: true }}
+        autoplay={{ delay: 3000 }}
+        loop={true}
+      >
+        {projects.map((project, index) => (
+          <SwiperSlide key={index}>
+            <div className="relative bg-gray-300 rounded-lg shadow-xl p-6 mx-4">
+              <img
+                src={project.image}
+                alt={project.status}
+                className="w-full h-[60vh] object-cover rounded-md"
+              />
+              <h3 className="text-xl font-semibold mt-4">{project.title} | {project.tech}</h3>
+              <p className="text-black mt-2">{project.description}</p>
             </div>
-          ))}
-        </div>
-      </div>
-    </section>
+          </SwiperSlide>
+        ))}
+      </Swiper>
+    </div>
   );
 };
 
-export default Projects;
+export default ProjectsCarousel;
